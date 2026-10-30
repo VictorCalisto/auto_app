@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
+  # Restringe a dependência do Faker a uma versão com mais de 30 dias.
+  crypto: 3.0.7
+  faker: 2.2.0
   flutter_test:
     sdk: flutter
 

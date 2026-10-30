@@ -9,6 +9,12 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+dcm:
+  metrics:
+    cyclomatic-complexity: 15
+    number-of-parameters: 6
+    maximum-nesting-level: 2
+
 analyzer:
   exclude:
     - build/**

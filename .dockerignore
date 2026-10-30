@@ -4,6 +4,8 @@
 !.env.example
 
 backend/.git
+backend/config/master.key
+backend/config/credentials*.yml.enc
 backend/log
 backend/tmp
 backend/storage
@@ -13,6 +15,7 @@ backend/coverage
 frontend/.dart_tool
 frontend/build
 frontend/.pub-cache
+frontend/coverage
 
 .idea
 .vscode

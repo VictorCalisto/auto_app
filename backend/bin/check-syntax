@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require "rbconfig"
+
+Dir.chdir(File.expand_path("..", __dir__)) do
+  arquivos = Dir.glob("{app,config,db,lib,spec}/**/*.rb") + Dir.glob("*.{rb,rake}") + ["Gemfile", "Rakefile"]
+  resultados = arquivos.uniq.sort.map { |arquivo| system(RbConfig.ruby, "-c", arquivo) }
+  abort "Foram encontrados erros de sintaxe Ruby." unless resultados.all?
+end

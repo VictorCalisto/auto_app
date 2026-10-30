@@ -13,11 +13,11 @@ RUN apt-get update \
 
 WORKDIR /backend
 
-COPY Gemfile Gemfile.lock ./
+COPY backend/Gemfile backend/Gemfile.lock ./
 RUN bundle install
 
-COPY . .
+COPY backend/ .
 
 EXPOSE 3000
 
-CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["bash", "-lc", "rm -f /backend/tmp/pids/server.pid && bin/rails db:prepare && exec bin/rails server -b 0.0.0.0 -p 3000"]

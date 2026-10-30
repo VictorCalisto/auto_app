@@ -1,11 +1,17 @@
 # Run using bin/ci
 
 CI.run do
-  step "Setup", "bin/setup --skip-server"
+  step "Preparar banco de teste", "env RAILS_ENV=test bin/rails db:prepare"
+
+  step "Sintaxe: Ruby", "ruby bin/check-syntax"
 
   step "Style: Ruby", "bin/rubocop"
 
-  step "Security: Gem audit", "bin/bundler-audit"
+  step "Qualidade: RubyCritic", "bundle exec rubycritic --no-browser --minimum-score 80 app lib"
+
+  step "Testes: RSpec", "bundle exec rspec"
+
+  step "Security: Gem audit", "bin/bundler-audit check --update"
   step "Security: Brakeman code analysis", "bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error"
 
 
